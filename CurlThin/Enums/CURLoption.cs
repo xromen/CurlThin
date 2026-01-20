@@ -905,6 +905,8 @@ namespace CurlThin.Enums
         /* Suppress proxy CONNECT response headers from user callbacks */
         SUPPRESS_CONNECT_HEADERS = CURLOPTTYPE.LONG + 265,
 
-        CURLOPT_LASTENTRY /* the last unused */
+        CURLOPT_LASTENTRY, /* the last unused */
+
+        MIMEPOST = CURLOPTTYPE.OBJECTPOINT + 269
     }
 }

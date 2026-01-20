@@ -65,6 +65,32 @@ namespace CurlThin
             public static extern IntPtr StrError(CURLcode errornum);
         }
 
+        public static class Mime
+        {
+            //public delegate UIntPtr DataHandler(IntPtr data, UIntPtr size, UIntPtr nmemb, IntPtr userdata);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_init")]
+            public static extern SafeMimeHandle Init(SafeEasyHandle easyHandle);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_free")]
+            public static extern void Free(IntPtr handle);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_addpart")]
+            public static extern SafeMimePartHandle AddPart(SafeMimeHandle handle);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_data")]
+            public static extern CURLcode Data(SafeMimePartHandle handle, string data, UIntPtr dataSize);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_filedata")]
+            public static extern CURLcode FileData(SafeMimePartHandle handle, string fileName);
+
+            [DllImport(LIBCURL, EntryPoint = "curl_mime_name")]
+            public static extern CURLcode Name(SafeMimePartHandle handle, string name);
+
+            
+        }
+
+
         public static class Multi
         {
             [DllImport(LIBCURL, EntryPoint = "curl_multi_init")]
